@@ -65,9 +65,9 @@ const ROUTES = [
 
     path: 'Apis',
     component:ApisComponent
-  }
+  },
   
-
+    {
     path:'advertisment',
     component:AdvertismentComponent
   },
