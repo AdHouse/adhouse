@@ -1,7 +1,7 @@
 var UserController = require ('../database/User/UserController.js');
 var AdvController = require ('../database/advertisments/AdvController.js');
 var CommentController = require ('../database/comment/CommentController.js');
-
+var ApiController=require('../database/Api/ApiUserController.js')
 module.exports = function (app, express) {
 	
 /*								Advertisment route									 */
@@ -30,8 +30,10 @@ module.exports = function (app, express) {
 		app.put('/api/editComment',CommentController.editComment);
 		app.delete('/api/removeCommentById/delete/:_id',CommentController.removeCommentById);
 		app.get('/api/getCommentsById/:advId',CommentController.getCommentsById);		
-
-
-		
+/*                             Apiroute
+//==============================================================================*/
+		app.post('/api/Apis/login',ApiController.signin);
+		app.post('/api/Apis/signup',ApiController.signup);
+		app.get('/api/advertesment/:apikey',ApiController.UserApiData);
 };
 

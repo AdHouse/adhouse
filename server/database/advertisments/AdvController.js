@@ -3,6 +3,7 @@ var UserC=require('../User/UserController.js')
 
 module.exports = {
   Addserv:function(req,res){
+    console.log(req.body)
   	var category=req.body.ad_cat;
   	var location=req.body.ad_loc;
     var desc=req.body.ad_desc;
@@ -66,21 +67,7 @@ module.exports = {
         
       
        })
-    // Adv.find({ad_approve:false},function(err,data){
-    //   let dataRes
-    //   if(err){ 
-    //     res.json(err)}
-    //     else{
-    //       dataRes=data.filter(function(el){
-    //         if(el.ad_approve!==true){
-    //           return el
-    //         }
-    //       })
-    //       console.log("=====================")
-    //       //res.json(dataRes)
-    //     }
-    // })
-    console.log("++++++++++++++++++++++++++")
+    
   },
   /// reject///
     Reject:function(req,res){
@@ -123,20 +110,26 @@ module.exports = {
             res.json("approved succeesfully!!")
           }
       })
-    }
-  })
-},
+          }
+      })
+      // res.json("approve")
+      
 
-getAdv:function (req,res) {
-  Adv.find({_id:req.params.advId},function (err,data){
-    if (!data.length || data === undefined ) {
-      res.json('no data for this adv ')
+    },
+    getAdv:function (req,res) {
+ Adv.find({_id:req.params.advId},function (err,data){
+   if (!data.length || data === undefined ) {
+     res.json('no data for this adv ')
 
-    }else{
-      console.log('Wow , advertisment information retrived ')
-      res.json (data)
-    }
-  })  
+   }else{
+     console.log('Wow , advertisment information retrived ')
+     res.json (data)
+   }
+ })  
 }
+    
 
+  
+
+ 
 };

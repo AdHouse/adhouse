@@ -1,0 +1,115 @@
+
+<div class="container">
+<br><br>
+<form role="form" (submit)="login()" *ngIf="!showReg">
+<div class="row">
+     <div class="col-md-4"></div>
+    <div class="col-md-4 titlesign">
+    
+      <h2 class="hsign">If You have Account login Or 
+      <a href="#/Apis" (click)="ShowUp()">sign up </a></h2>
+      </div>
+      <div class="col-md-4"></div>
+      </div>
+      
+      <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+        <hr class="colorgraph">
+          <div class="form-group">
+           <input type="email" name="email"  class="form-control input-lg" placeholder="Email" tabindex="1"
+           [(ngModel)]="email" required>              
+          </div>
+
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+        <br>
+      <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="password" name="password"  
+            class="form-control input-lg"
+             placeholder="Password" tabindex="5"
+             [(ngModel)]="password" required>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row center">
+      <div class="col-md-2"></div>
+        <div class="col-xs-12 col-md-8 center">
+        <button 
+        class="btn btn-success btn-block btn-lg" type="submit">Get My Key</button>
+         <h3><span class="error" *ngIf="message">{{message}}!!</span></h3>
+         <h3><span class="sucs" *ngIf="key">your key:<br>{{key}}</span></h3>
+         <hr class="colorgraph">
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+       </form>
+
+      <!--  form signup -->
+      <form role="form" (submit)="signupApi()" *ngIf="showReg">
+<div class="row">
+     <div class="col-md-4"></div>
+    <div class="col-md-4 titlesign">
+    
+      <h2 class="hsign"> Sign Up By Email Or 
+      <a href="#/Apis" (click)="ShowD()">sign in </a></h2>
+      </div>
+      <div class="col-md-4"></div>
+      </div>
+      
+      <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+        <hr class="colorgraph">
+          <div class="form-group">
+           <input type="text" name="username"  class="form-control input-lg" placeholder="User Name" tabindex="1"
+           [(ngModel)]="username" required>              
+          </div>
+
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+        <br>
+      <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="password" name="password"  
+            class="form-control input-lg"
+             placeholder="Password" tabindex="5"
+             [(ngModel)]="password" required>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input type="email" name="email"  
+            class="form-control input-lg"
+             placeholder="email" tabindex="5"
+             [(ngModel)]="email" required>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row center">
+      <div class="col-md-3"></div>
+        <div class="col-xs-12 col-md-6">
+        <button 
+        class="btn btn-success btn-block btn-lg" type="submit">Sign Up</button>
+         <h3><span class="error" *ngIf="message">{{message}}!!</span></h3>
+
+         <hr class="colorgraph">
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+       </form>
+  </div>
+

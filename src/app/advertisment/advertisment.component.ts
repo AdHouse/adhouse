@@ -20,34 +20,29 @@ export class AdvertismentComponent implements OnInit {
   inserted:any;
   deletedDone:any;
 
-  constructor(private user:userDataService , private route:ActivatedRoute) {
-  			this.url = this.route.params.subscribe( params=> {
-  				this.id = params['id'];
-  			})
-  	  		this.user.getAdvInfo(this.id).subscribe( 
-  			 ok=>{
-  			 	this.advdata = ok;
-  			 	// console.log(ok);
-			  	})
-  	  		console.log(this.advdata)
+ constructor(private user:userDataService , private route:ActivatedRoute) {
+		this.url = this.route.params.subscribe( params=> {
+			this.id = params['id'];
+		})
+  		this.user.getAdvInfo(this.id).subscribe( 
+ 			ok=>{
+    			 	this.advdata = ok;
+		  	})
   	  		this.user.getCommById(this.id).subscribe(data =>{
-  	  			console.log(data)
   	  			this.comments = data ;
   	  			this.comId = data[0]._id
-  	  			// console.log(this.comId)
-
   	  		})
-
    }
-   commentAuth(id){
+  commentAuth(id){
   	this.userId =localStorage.getItem('id');
   	this.userId =JSON.parse(this.userId);
-   	return (id == this.userId) 
+   	return ( id == this.userId ) 
    }
-   editComment(){
+  editComment(x){
+  	this.comId = x;
    	this.toggle = !this.toggle ;
    }
-   anotherSubmit(){
+  anotherSubmit(){
    	let updateCom = {
    		_id:this.comId,
    		text:this.text
@@ -55,12 +50,11 @@ export class AdvertismentComponent implements OnInit {
    	this.user.editComm(updateCom).subscribe(Done =>{
    		this.com = Done ;
    	})
-  	console.log(updateCom);
 	this.user.getCommById(this.id).subscribe(data =>{
 		this.comments = data ;
 	})
    }
-   insertComment(){
+  insertComment(){
   	this.userId =localStorage.getItem('id');
   	this.userId =JSON.parse(this.userId);
    	let newCom = {
@@ -68,6 +62,7 @@ export class AdvertismentComponent implements OnInit {
    		advId:this.id,
    		text:this.com
    	}
+   	console.log(newCom)
    	this.user.InsertCom(newCom).subscribe(Done => {
    		this.inserted = Done ;
    	})
@@ -75,23 +70,22 @@ export class AdvertismentComponent implements OnInit {
 		this.comments = data ;
 	})
    }
-   deleteComment(){
+  deleteComment(){
    	this.user.delComm(this.comId).subscribe(deleted =>{
    		this.deletedDone = deleted;
    		console.log(this.deletedDone);
    	})
 	this.user.getCommById(this.id).subscribe(data =>{
 		this.comments = data ;
+		console.log(data)
 	})
    }
-   isAuth(){
+  isAuth(){
    	this.toggle = !this.toggle;
   	this.userId =localStorage.getItem('id');
   	this.userId =JSON.parse(this.userId);
    	return typeof(this.userId) === 'string'; 
    }
-
   ngOnInit() {
   }
-  
 }

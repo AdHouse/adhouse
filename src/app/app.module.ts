@@ -26,7 +26,11 @@ import { AdminComponent } from './admin/admin.component';
 import { ProfileComponent } from './profile/profile.component';
 import { userDataService } from './userdata.service';
 import  {AdminService} from './admin.service';
+
+import { ApisComponent } from './apis/apis.component';
+
 import { AdvertismentComponent } from './advertisment/advertisment.component';
+
 
 
 
@@ -58,6 +62,12 @@ const ROUTES = [
     component: AdminComponent
   },
   {
+
+    path: 'Apis',
+    component:ApisComponent
+  },
+  
+    {
     path:'advertisment',
     component:AdvertismentComponent
   },
@@ -65,6 +75,7 @@ const ROUTES = [
     path:'advertisment/:id',
     component:AdvertismentComponent
   } 
+
 ];
 @NgModule({
   declarations: [
@@ -85,7 +96,10 @@ const ROUTES = [
 
     CategoriesPipe,
 
-    AdvertismentComponent,
+
+    ApisComponent,
+
+    AdvertismentComponent
 
 
     

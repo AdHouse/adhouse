@@ -44,7 +44,6 @@ module.exports = {
     	})
 	},
 	editComment: function (req,res) {
-		console.log(req.body)
 	   Comment.update({_id:req.body._id},{text:req.body.text},function(err,data){
       		if(err){
         		res.json(err)
