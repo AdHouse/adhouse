@@ -18,36 +18,51 @@
                 <br>
                 <br>
                 <br>
-                <br>
+            <div class="detailBox">
+    <div class="titleBox">
+      <label>Comment Box</label>
+        <button type="button" class="close" aria-hidden="true">&times;</button>
 
-        <div class="row">
-          <div  class="col-md-9" *ngFor="let comm of comments">
+    <br>
+    <div class="commentBox">
+
+            <div class="commentBox">
+        
+        <p class="taskDescription"> Leave your comment below </p>
+    </div>
+            <ul class="commentList">
+                <div class="commenterImage">
+                  <img src="http://placekitten.com/50/50" />
+                </div>
+                
+          <div  class="col-md-6" *ngFor="let comm of comments">
           <ul>
-          	<li>
           		 <h5>
           		 - : 	{{comm.text}}
           		 </h5> 
           		 <br>
-          	<span class="largefont" style="color:blue" >
           		User name : {{comm.username}} &nbsp; &nbsp; &nbsp; Posted date : {{comm.date}} 
         	<button *ngIf = "commentAuth(comm.userId)" (click)="editComment(comm._id)" type="submit"  >Edit</button>
         	<button *ngIf = "commentAuth(comm.userId)" (click)="deleteComment()" type="submit"   >delete</button>
-          	</span>	  
         	
         	<br>
-        <div class="col-md-6">
+			<hr>
+
+        <div class="col-md-12">
         	          <div class="form-group">
 
 
-<br>
+			<br>
 
           </div>
           </div>
-          	</li>
           </ul>
         </div>
    <br>
-        </div>
+
+                </ul>
+
+
 <button  (click)="anotherSubmit();!editComment();anotherSubmit()" type="submit" *ngIf=toggle >submit</button>
 <textarea id="myTextarea"    [hidden]=!toggle [(ngModel)]="text">
    </textarea>
@@ -55,3 +70,6 @@
 <button  (click)="insertComment()" type="submit"  *ngIf="isAuth()">submit</button>
 <br>
 <br>
+    </div>
+    </div>
+    </div>
