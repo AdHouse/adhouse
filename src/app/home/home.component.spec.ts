@@ -1,7 +1,32 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Observable } from 'rxjs/Observable'
+import { Http } from '@angular/http';
+
 import { AppModule } from '../app.module'
 import { HomeComponent } from './home.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { GetaddService } from '../getadd.service';
+import { CategoriesPipe } from '../categories.pipe';
+
+
+
+ // let MockGetaddService :any
+
+ // MockGetaddService = {
+ //   getalladv: () => Observable.of([{
+ //     ad_cat:String,
+ //    ad_loc:String,
+ //    ad_desc:String,
+ //    ad_img:String,
+ //    ad_date:String,
+ //    ad_approve:Boolean,
+ //    ad_phone:String,
+ //    ad_uid: String
+ //     }]
+ //   )
+ // }
+
+
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -10,7 +35,11 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent ],
-      schemas : [NO_ERRORS_SCHEMA]
+      providers: [ GetaddService,
+      
+      {provide: Http , useValue: GetaddService },
+      CategoriesPipe  
+      ]
     })
     .compileComponents();
   }));
