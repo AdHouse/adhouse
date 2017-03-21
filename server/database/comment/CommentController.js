@@ -3,10 +3,13 @@ var User = require ('../User/UserModel.js');
 module.exports = {
 	insertComment : function (req,res) {
 	    var username ='';
+	    var userImage ;
 		    var date=new Date().toUTCString().substr(0,26);
 		User.find({_id:req.body.userId},function(err,data){
 			if (!err) {
 				this.username = data[0].username;
+				this.userImage = data[0].image;
+				console.log(data[0].image)
 				console.log(this.username)
 				
 			}
@@ -16,17 +19,19 @@ module.exports = {
 		var text = req.body.text ;
 		 Comment.create ({
 		 	username:this.username,
+		 	userImage:this.userImage,
 			userId :userId ,
 			advId :advId ,
 			text :text ,
 			date:date
-		},function (err,data) {
+		},function (err,result) {
 			if (err) {
 				throw err ;
 			}
 			else{
+				console.log(result);
 				console.log("insert successfuly");
-				res.json(data);
+				res.json(result);
 			}
 		})
 

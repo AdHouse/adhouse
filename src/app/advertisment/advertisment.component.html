@@ -1,23 +1,29 @@
+    <br>
+    <br>
+    <div class="album text-muted">
+      <div class="container">
         <div class="row">
           <div  class="col-md-4" *ngFor="let ad of advdata"  >
             <img class = "img" data-src="{{ad.ad_img}}" >
             <p class="card-text">
-                <span class="media-heading">{{ad.ad_date}}</span>
-                <br>
-                <span>Category : {{ad.ad_cat}}</span>
-                <br>
-                <span>Location: {{ad.ad_loc}}</span>
-                <br>
-                <span>Description: {{ad.ad_desc}}</span>
-                <br>
-                <span> Contact : {{ad.ad_phone}}</span>
-                <br>
             </p>
+                <h4 class="media-heading">Posted date: {{ad.ad_date}}</h4>
+                <br>
+                <h4>Category : {{ad.ad_cat}}</h4>
+                <br>
+                <h4>Location: {{ad.ad_loc}}</h4>
+                <br>
+                <h4>Description: {{ad.ad_desc}}</h4>
+                <br>
+                <h4> Contact : {{ad.ad_phone}}</h4>
+                <br>
           </div>
         </div>
                 <br>
                 <br>
                 <br>
+                </div>
+                </div>
             <div class="detailBox">
     <div class="titleBox">
       <label>Comment Box</label>
@@ -28,46 +34,40 @@
 
             <div class="commentBox">
         
-        <p class="taskDescription"> Leave your comment below </p>
+        <h3 class="taskDescription" *ngIf="isAuth()" > Leave your comment below </h3>
+        <h3 class="taskDescription" *ngIf="!isAuth()" >Sign up /Sign in to leave your comment below</h3>
     </div>
             <ul class="commentList">
-                <div class="commenterImage">
-                  <img src="http://placekitten.com/50/50" />
-                </div>
                 
           <div  class="col-md-6" *ngFor="let comm of comments">
-          <ul>
-          		 <h5>
-          		 - : 	{{comm.text}}
-          		 </h5> 
+         
+                <div class="commenterImage">
+                  <img src="{{comm.userImage}}" />
+                </div>
+          		 <h3>
+          		  :  &nbsp;	{{comm.text}}
+          		 </h3> 
           		 <br>
-          		User name : {{comm.username}} &nbsp; &nbsp; &nbsp; Posted date : {{comm.date}} 
+          		User name : {{comm.username}} &nbsp; &nbsp; &nbsp; &nbsp; Posted date : {{comm.date}}  GMT 
         	<button *ngIf = "commentAuth(comm.userId)" (click)="editComment(comm._id)" type="submit"  >Edit</button>
-        	<button *ngIf = "commentAuth(comm.userId)" (click)="deleteComment()" type="submit"   >delete</button>
+        	<button *ngIf = "commentAuth(comm.userId)" (click)="deleteComment(comm._id)" type="submit"   >delete</button>
         	
         	<br>
 			<hr>
 
         <div class="col-md-12">
-        	          <div class="form-group">
-
-
 			<br>
-
           </div>
-          </div>
-          </ul>
         </div>
    <br>
-
                 </ul>
 
 
 <button  (click)="anotherSubmit();!editComment();anotherSubmit()" type="submit" *ngIf=toggle >submit</button>
 <textarea id="myTextarea"    [hidden]=!toggle [(ngModel)]="text">
    </textarea>
-   <input type="text" style="width: 100%;" [(ngModel)]="com" *ngIf="isAuth()"  placeholder="insert comment"/>
-<button  (click)="insertComment()" type="submit"  *ngIf="isAuth()">submit</button>
+   <input type="text" style="width: 100%;" [(ngModel)]="com" *ngIf="isAuth()" placeholder="insert comment"/>
+<button  (click)="insertComment()" type="submit"  *ngIf="isAuth()" [hidden]=toggle>submit</button>
 <br>
 <br>
     </div>
