@@ -30,7 +30,7 @@ constructor(private Auth:AuthService) {}
           localStorage.setItem('UserType',JSON.stringify(ok.Admin));
           //console.log(localStorage.getItem('UserType'));
          
-        // window.location.href=("/#Adds")
+        window.location.href=("/#Profile")
   			this.message=ok.id
   		}else{
   			this.message=ok;

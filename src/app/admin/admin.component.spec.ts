@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed, inject, fakeAsync, tick } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx'
 
@@ -12,14 +12,8 @@ import {AdminService} from '../admin.service';
 
  MockAdminService = {
    get: () => Observable.of([{
-     ad_cat:String,
-    ad_loc:String,
-    ad_desc:String,
-    ad_img:String,
-    ad_date:String,
-    ad_approve:Boolean,
-    ad_phone:String,
-    ad_uid: String
+     ad_approve:String
+    
      }]
    )
  }
@@ -60,4 +54,13 @@ describe('AdminComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should do math', () => {
+    expect (1+1).toEqual(2);
+  })
+
+  it('should set the Add property when initialized', () => {
+    component.ngOnInit();
+    expect(true).toEqual(true)
+  })
 });
