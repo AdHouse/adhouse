@@ -9,13 +9,15 @@
 
 //  MockuserDataService = {
 //    profile: (data) => Observable.of([{
-//      data.email  = email;
+//      email  = email;
 //          date = date;
 //          username = username;
 //          image = image;
 //      }]
 //    )
 //  }
+//  spyOn(userDataService, 'profile')
+//   .and.returnValue(Observable.of(('Fake Data')))
 
 
 // describe('ProfileComponent', () => {

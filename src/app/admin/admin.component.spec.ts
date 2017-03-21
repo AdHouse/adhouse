@@ -12,7 +12,7 @@ import {AdminService} from '../admin.service';
 
  MockAdminService = {
    get: () => Observable.of([{
-     ad_approve:String
+     ad_approve:true
     
      }]
    )
@@ -61,6 +61,6 @@ describe('AdminComponent', () => {
 
   it('should set the Add property when initialized', () => {
     component.ngOnInit();
-    expect(true).toEqual(true)
+    expect(get).toEqual(true)
   })
 });
