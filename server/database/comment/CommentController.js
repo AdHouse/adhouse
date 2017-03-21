@@ -1,4 +1,4 @@
-var Comment = require('./CommentModel.js');
+var Comment = require('./commentModel.js');
 var User = require ('../User/UserModel.js');
 module.exports = {
 	insertComment : function (req,res) {
