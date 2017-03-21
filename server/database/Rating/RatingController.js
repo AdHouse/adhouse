@@ -24,7 +24,13 @@ module.exports = {
 				res.status(500).send('err');
 			}else{
 				console.log('done')
-				res.status(200).send(allRating);
+				if (allRating === undefined || null) {
+				 	res.send(['Sorry this advertisment didnt have any Rating'])
+				}
+				else{
+					
+					res.status(200).send(allRating);
+				}
 			}
 		});
 	}
