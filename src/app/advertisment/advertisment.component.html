@@ -49,21 +49,22 @@
           		 </h3> 
           		 <br>
           		User name : {{comm.username}} &nbsp; &nbsp; &nbsp; &nbsp; Posted date : {{comm.date}}  GMT 
-        	<button *ngIf = "commentAuth(comm.userId)" (click)="editComment(comm._id)" type="submit"  >Edit</button>
+        	<button *ngIf = "commentAuth(comm.userId)"  (click)="editComment(comm._id)" type="submit"  >Edit</button>
         	<button *ngIf = "commentAuth(comm.userId)" (click)="deleteComment(comm._id)" type="submit"   >delete</button>
-        	
-        	<br>
-			<hr>
+<button  (click)="!editComment(comm._id)"  type="submit" *ngIf=toggle >Cancel</button>
+          
+          <br>
+      <hr>
 
         <div class="col-md-12">
-			<br>
+      <br>
           </div>
         </div>
    <br>
                 </ul>
 
 
-<button  (click)="anotherSubmit();!editComment();anotherSubmit()" type="submit" *ngIf=toggle >submit</button>
+<button  (click)="anotherSubmit();!editComment();anotherSubmit()" type="submit" *ngIf=toggle >Post</button>
 <textarea id="myTextarea"    [hidden]=!toggle [(ngModel)]="text">
    </textarea>
    <input type="text" style="width: 100%;" [(ngModel)]="com" *ngIf="isAuth()" placeholder="insert comment"/>

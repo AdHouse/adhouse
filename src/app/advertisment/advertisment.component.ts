@@ -20,6 +20,7 @@ export class AdvertismentComponent implements OnInit {
   inserted:any;
   deletedDone:any;
   dump :any;
+  AvgRating:any;
  constructor(private user:userDataService , private route:ActivatedRoute) {
 		this.url = this.route.params.subscribe( params=> {
 			this.id = params['id'];
@@ -51,9 +52,7 @@ export class AdvertismentComponent implements OnInit {
    	this.user.editComm(updateCom).subscribe(Done =>{
    		this.dump = Done ;
    	})
-	this.user.getCommById(this.id).subscribe(data =>{
-		this.comments = data ;
-	})
+
     this.com ='';
 	this.text ='';
     this.refreshCom();
@@ -66,15 +65,13 @@ export class AdvertismentComponent implements OnInit {
    		advId:this.id,
    		text:this.com
    	}
-   	console.log(newCom)
    	this.user.InsertCom(newCom).subscribe(Done => {
    		this.inserted = Done ;
-   	})
-	this.user.getCommById(this.id).subscribe(data =>{
-		this.comments = data ;
-	})
-   this.com ='';
-   this.refreshCom();
+      this.com ='';
+    })
+    this.refreshCom()
+   
+
 
    }
   deleteComment(id){
@@ -82,10 +79,7 @@ export class AdvertismentComponent implements OnInit {
    		this.deletedDone = deleted;
    		console.log(this.deletedDone);
    	})
-	this.user.getCommById(this.id).subscribe(data =>{
-		this.comments = data ;
-		console.log(data)
-	})
+
    this.refreshCom();
    }
   isAuth(){
@@ -95,17 +89,40 @@ export class AdvertismentComponent implements OnInit {
    	return typeof(this.userId) === 'string'; 
    }
   refreshCom(){
-	this.user.getCommById(this.id).subscribe(data =>{
-	this.comments = data ;
-	console.log(data)
-	})
-}
+	   this.user.getCommById(this.id).subscribe(data =>{
+	     this.comments = data ;
+	     console.log(data)
+	   })
+  }
+  insertRateAdv(advId,value){
+    this.dump = '';
+    this.userId =localStorage.getItem('id');
+    this.userId =JSON.parse(this.userId);
+    let rate ={
+      value:value,
+      postedBy:this.userId,
+      advertismentId:advId 
+    }
+    this.user.insertRate(rate).subscribe( Done =>{
+      this.dump = Done ;
+    })
+  }
+  retriveRating(advId){
+    this.user.getAllRatingByAdID(advId).subscribe( Done =>{
+        this.AvgRating = Done ;
+    })
+    this.refreshRating(advId)
+  }
+  refreshRating(advId){
+    this.user.getAllRatingByAdID(advId).subscribe( Done =>{
+        this.AvgRating = Done ;
+    })
+  }
   ngOnInit() {
 
 
   }
     ngOnChanges() {
       this.refreshCom();
-    //throw new Error('ngOnChanges called; should not be when ngDoCheck is defined!');
   }
 }
