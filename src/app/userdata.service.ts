@@ -31,5 +31,11 @@ export class userDataService {
   getAdvInfo (id){
     return this.http.get ('/api/addserv/'+id).map(res=>res.json());
   }
+  insertRate (data){
+    return this.http.post ('/api/insertR',data).map (res => res.json());
+  }
+  getAllRatingByAdID (id){
+    return this.http.get ('/api/allR/:id'+id).map (res => res.json());
+  }
 
 }
