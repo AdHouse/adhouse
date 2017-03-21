@@ -19,21 +19,25 @@ white-space: nowrap;
 }
 
 .detailBox {
-    width:1100px;
+
+    width:700px;
     border:2px solid #bbb;
     margin:60px;
 }
 .titleBox {
-    background-color:#fdfdfd;
+    background-color: #ccccff
+;
     padding:10px;
 }
 .titleBox label{
+
   color:#444;
   margin:0;
   display:inline-block;
 }
 
 .commentBox {
+
     padding:10px;
     border-top:1px dotted #bbb;
 }
@@ -97,4 +101,21 @@ white-space: nowrap;
 
 .jumbotron .container {
   max-width: 40rem;
+}
+
+p {
+    color: navy blue;font-size: 14px;
+    font-weight: 9px ;
+}
+h4{
+    color:  #0000e6
+;font-size: 12px;
+}
+
+h5{
+
+    color: # 0000FF;
+     font-size: 25px; 
+  margin-left: 25px;
+
 }
