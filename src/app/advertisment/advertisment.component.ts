@@ -19,7 +19,7 @@ export class AdvertismentComponent implements OnInit {
   userId:any;
   inserted:any;
   deletedDone:any;
-
+  dump :any;
  constructor(private user:userDataService , private route:ActivatedRoute) {
 		this.url = this.route.params.subscribe( params=> {
 			this.id = params['id'];
@@ -30,7 +30,8 @@ export class AdvertismentComponent implements OnInit {
 		  	})
   	  		this.user.getCommById(this.id).subscribe(data =>{
   	  			this.comments = data ;
-  	  			this.comId = data[0]._id
+  	  			this.comId = data[0]._id;
+  	  			console.log(data)
   	  		})
    }
   commentAuth(id){
@@ -48,11 +49,14 @@ export class AdvertismentComponent implements OnInit {
    		text:this.text
    	}
    	this.user.editComm(updateCom).subscribe(Done =>{
-   		this.com = Done ;
+   		this.dump = Done ;
    	})
 	this.user.getCommById(this.id).subscribe(data =>{
 		this.comments = data ;
 	})
+    this.com ='';
+	this.text ='';
+    this.refreshCom();
    }
   insertComment(){
   	this.userId =localStorage.getItem('id');
@@ -69,9 +73,12 @@ export class AdvertismentComponent implements OnInit {
 	this.user.getCommById(this.id).subscribe(data =>{
 		this.comments = data ;
 	})
+   this.com ='';
+   this.refreshCom();
+
    }
-  deleteComment(){
-   	this.user.delComm(this.comId).subscribe(deleted =>{
+  deleteComment(id){
+   	this.user.delComm(id).subscribe(deleted =>{
    		this.deletedDone = deleted;
    		console.log(this.deletedDone);
    	})
@@ -79,6 +86,7 @@ export class AdvertismentComponent implements OnInit {
 		this.comments = data ;
 		console.log(data)
 	})
+   this.refreshCom();
    }
   isAuth(){
    	this.toggle = !this.toggle;
@@ -86,6 +94,18 @@ export class AdvertismentComponent implements OnInit {
   	this.userId =JSON.parse(this.userId);
    	return typeof(this.userId) === 'string'; 
    }
+  refreshCom(){
+	this.user.getCommById(this.id).subscribe(data =>{
+	this.comments = data ;
+	console.log(data)
+	})
+}
   ngOnInit() {
+
+
+  }
+    ngOnChanges() {
+      this.refreshCom();
+    //throw new Error('ngOnChanges called; should not be when ngDoCheck is defined!');
   }
 }

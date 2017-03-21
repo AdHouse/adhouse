@@ -1,7 +1,12 @@
+@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
 .img{
-	text-align:center;
-	position: center;
+  text-align:right;
+  position: center;
     display: inline-block;
+    border:10;
+
+    border-width: 1px;
+    border-color: black;
 
 }
 .fieldwrapper{
@@ -12,7 +17,6 @@ white-space: nowrap;
   font-family:arial; 
   font-size: 14px; 
 }
-@import url(//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css);
 
 .detailBox {
     width:1100px;
@@ -80,4 +84,17 @@ white-space: nowrap;
 .actionBox {
     border-top:1px dotted #bbb;
     padding:10px;
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+  text-align:center;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
 }
