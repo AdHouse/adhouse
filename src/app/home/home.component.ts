@@ -13,7 +13,7 @@ import { CategoriesPipe } from '../categories.pipe';
 export class HomeComponent implements OnInit {
   //pipes///
   
-  catgs:any = ["Scoolership","Food-Supplements","Fashion","Jobs","Cars&Bikes","Furniture","Real-Estate-For-Sale","Pets","Funny-Ads","Electronic","Baby-Kids","Other"];
+  catgs:any = ["Scholorship","Food-Supplements","Fashion","Jobs","Cars&Bikes","Furniture","Real-Estate-For-Sale","Pets","Funny-Ads","Electronic","Baby-Kids","Other"];
   advId:any; 
 
 

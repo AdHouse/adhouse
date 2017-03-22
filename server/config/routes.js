@@ -2,7 +2,9 @@ var UserController = require ('../database/User/UserController.js');
 var AdvController = require ('../database/advertisments/AdvController.js');
 var CommentController = require ('../database/comment/CommentController.js');
 var ApiController=require('../database/Api/ApiUserController.js');
-var RatingController = require('../DataBase/Rating/RatingController.js')
+var RatingController = require('../DataBase/Rating/RatingController.js');
+var HelpDesk = require('./helpdesk.js');
+
 module.exports = function (app, express) {
 	
 /*								Advertisment route									 */
@@ -41,5 +43,9 @@ module.exports = function (app, express) {
 //==============================================================================*/
 		app.post('/api/insertR',RatingController.insert);
 		app.get('/api/allR/:id',RatingController.getAllRatingsByADID);
-};
 
+
+ /*								HelpDesk route
+//==============================================================================*/
+		app.post('/api/helpdesk/support',HelpDesk.sendEmail);
+	};
