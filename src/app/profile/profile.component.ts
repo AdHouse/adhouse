@@ -33,7 +33,7 @@ notAproved: number = 0;
 			  	})
       this.user.getAdv(this.id).subscribe( adv => {
         console.log(this.id)
-        this.userAdv = adv ;
+        this.userAdv = adv.reverse();
         this.count = adv.length;
         for (var i = 0; i < adv.length; i++) {
           if (adv[i].ad_approve == true) {
@@ -47,6 +47,7 @@ notAproved: number = 0;
 
 
   }
+  
   ngOnInit() {
   }
   fileChange(input){
@@ -104,30 +105,28 @@ notAproved: number = 0;
     Reject(id){
       console.log(id);
       this.user.Remove(id).subscribe(ok=>{
-        console.log(ok)
-        for(var i=0 ; i<this.userAdv.length; i++){
-          if(this.userAdv[i]._id === id){
-            this.userAdv.splice(i,1)
-            console.log('deleted successfuly yeaaa')
+          console.log(ok)
+          for(var i=0 ; i<this.userAdv.length; i++){
+            if(this.userAdv[i]._id === id){
+              this.userAdv.splice(i,1)
+              console.log('deleted successfuly yeaaa')
+            }
           }
-        }
-        this.user.getAdv(this.id).subscribe( adv => {
-        console.log(this.id)
-        this.userAdv = adv ;
-        this.count = adv.length;
-        this.aproved = 0;
-        this.notAproved = 0;
-        for (var i = 0; i < adv.length; i++) {
-          if (adv[i].ad_approve == true) {
-            console.log(adv[i].ad_approve)
-            this.aproved = this.aproved + 1;
-          }else{
-            this.notAproved +=1 ;
+          this.user.getAdv(this.id).subscribe( adv => {
+            console.log(this.id)
+            this.userAdv = adv ;
+            this.count = adv.length;
+            this.aproved = 0;
+            this.notAproved = 0;
+            for (var i = 0; i < adv.length; i++) {
+              if (adv[i].ad_approve == true) {
+                console.log(adv[i].ad_approve)
+                this.aproved = this.aproved + 1;
+              }else{
+                this.notAproved +=1 ;
+            }
           }
-        }
-      })
+        })
       })
     }
-
-
-}
+ }
