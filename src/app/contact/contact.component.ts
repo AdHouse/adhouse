@@ -30,7 +30,9 @@ export class ContactComponent implements OnInit {
   		message: this.message
   	}
 
-  	this.contact.contact(newMsg);
+  	this.contact.sendemail(newMsg).subscribe(ok=>{
+      console.log(ok)
+    })
   	
   }
    
