@@ -10,6 +10,14 @@
               <span>
                  Average Rating : {{AvgRating}}
               </span>
+              <br>
+  <input id="rating-5" type="radio" [(ngModel)] = "val" value="5" (click) = "insertRateAdv(ad._id,5)"> 5 &nbsp;
+  <input id="rating-4" type="radio" [(ngModel)] = "val" value="4" (click) = "insertRateAdv(ad._id,4)"> 4 &nbsp;
+  <input id="rating-3" type="radio" [(ngModel)] = "val" value="3" (click) = "insertRateAdv(ad._id,3)"> 3 &nbsp;
+  <input id="rating-2" type="radio" [(ngModel)] = "val" value="2" (click) = "insertRateAdv(ad._id,2)"> 2 &nbsp;
+  <input id="rating-1" type="radio" [(ngModel)] = "val" value="1" (click) = "insertRateAdv(ad._id,1)"> 1 &nbsp;
+              <br>
+
                 <p >Posted date: {{ad.ad_date}}</p>
                 <p>Category : {{ad.ad_cat}}</p>
                 <p>Location: {{ad.ad_loc}}</p>
