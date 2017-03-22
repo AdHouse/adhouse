@@ -57,7 +57,7 @@ module.exports = {
                 if(data.length===0){
                 	//// check if email correct or not 
           var transporter = nodemailer.createTransport({
-   		 service: 'gmail',
+   		   service: 'gmail',
   			  auth: {
     			 user: 'adhouse2017@gmail.com', // Your email id
    			 pass: 'AA12341234aa' // Your password
