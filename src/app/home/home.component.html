@@ -3,22 +3,34 @@
         <h1 class="jumbotron-heading">AdHouse </h1>
         <p class="lead text-muted">One place, all your needs</p>
          
-        <p class = "button">
+        <div col-md-3 class = "button">
           <a href="#" class="btn btn-primary">Choose category</a>
-          <select  [(ngModel)]="term" class="btn btn-secondary" >
+         </div>
+          <div col-md-3 class = "button">
+          <select col-md-2  [(ngModel)]="term" class="btn btn-secondary" >
 
          <option  *ngFor="let cat of catgs ">{{cat}}</option>
         </select>
+        </div>
+          <div col-md-3 class = "button">
+          <a href="#" class="btn btn-primary">Choose city</a>
+          </div>
+          <div col-md-3 class = "button">
+          <select  [(ngModel)]="condition" class="btn btn-secondary" >
+
+         <option  *ngFor="let city of cities ">{{city}}</option>
+        </select>
           
-        </p>
-      </div>
+        </div>
+
+      </div>      
     </section>
 
     <div class="album text-muted">
       <div class="container">
 
         <div class="row">
-          <div  class="col-md-4" *ngFor="let ad of alladds | filter: term"  >
+          <div  class="col-md-4" *ngFor="let ad of alladds | filter: term: condition "  >
             <img data-src="{{ad.ad_img}}" alt="Card image cap">
 
             <div class="card-text">

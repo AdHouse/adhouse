@@ -55,12 +55,12 @@ describe('AdminComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should do math', () => {
-    expect (1+1).toEqual(2);
+  it('should create', () => {
+    expect(component).toBeTruthy()
   })
 
   it('should set the Add property when initialized', () => {
     component.ngOnInit();
-    expect(get).toEqual(true)
+    expect(MockAdminService.get).toEqual(true)
   })
 });

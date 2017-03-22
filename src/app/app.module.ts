@@ -32,6 +32,7 @@ import { ApisComponent } from './apis/apis.component';
 import { AdvertismentComponent } from './advertisment/advertisment.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactService } from './contact.service';
+import { CitiesPipe } from './cities.pipe';
 
 
 
@@ -106,7 +107,9 @@ const ROUTES = [
 
     AdvertismentComponent,
 
-    ContactComponent
+    ContactComponent,
+
+    CitiesPipe
 
 
     
