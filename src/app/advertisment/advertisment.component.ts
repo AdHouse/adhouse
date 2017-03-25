@@ -38,6 +38,22 @@ export class AdvertismentComponent implements OnInit {
   		this.user.getAdvInfo(this.id).subscribe( ok=>{
     			 	this.advdata = ok;
       })
+          // retrive all comment(s) for this advertisment order by most recent  .
+      this.user.getCommById(this.id).subscribe( data =>{
+          this.comments = data.reverse() ;
+          this.comId = data[0]._id;
+       //   console.log(data)
+      })
+      // retrive the average rating for this advertisment 
+      this.user.getAllRatingByAdID(this.id).subscribe( data =>{
+          if (typeof(data) === 'string') {
+          this.AvgRating =  0 ;
+          }
+          else{
+              this.AvgRating = Math.floor(data) ;
+           //   console.log(data);
+          }
+     })
    }
 
   // ******** Comment functions ********* 
@@ -106,7 +122,7 @@ export class AdvertismentComponent implements OnInit {
   //  ******** rating functions ********* 
   
   insertRateAdv(advId,value){
-    console.log(advId,value)
+   // console.log(advId,value)
     this.dump = '';
     this.userId =localStorage.getItem('id');
     this.userId =JSON.parse(this.userId);
@@ -123,11 +139,11 @@ export class AdvertismentComponent implements OnInit {
   }
 
   retriveRating(){
-    console.log(this.id);
+    //console.log(this.id);
     this.user.getAllRatingByAdID(this.id).subscribe( Done =>{
         this.AvgRating= Done ;
     })
-    console.log(this.AvgRating);
+    // console.log(this.AvgRating);
   }
 
   refreshRating(){
@@ -144,22 +160,7 @@ export class AdvertismentComponent implements OnInit {
 
   ngOnInit() {
 
-        // retrive all comment(s) for this advertisment order by most recent  .
-          this.user.getCommById(this.id).subscribe( data =>{
-              this.comments = data.reverse() ;
-              this.comId = data[0]._id;
-              console.log(data)
-      })
-          // retrive the average rating for this advertisment 
-          this.user.getAllRatingByAdID(this.id).subscribe( data =>{
-              if (typeof(data) === 'string') {
-              this.AvgRating =  0 ;
-              }
-              else{
-                  this.AvgRating = Math.floor(data) ;
-                  console.log(data);
-              }
-         })
+
   }
   ngOnChanges() {
       this.refreshCom();
