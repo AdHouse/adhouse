@@ -77,13 +77,13 @@ module.exports = {
    
   },
   getUser :function (req,res) {
-    console.log(req.params)
+    //console.log(req.params)
     var userId = JSON.parse(req.params._id);
      User.findOne({_id:userId},function(err,data){
       if (err) {
         throw err
       }
-      console.log(data)
+      //console.log(data)
       res.json(data)
      })
   },
@@ -108,7 +108,7 @@ module.exports = {
 
   //// handle email///
   SendemailR:function(id,desc){
-     console.log("hi++++++++"+id)
+     // console.log("hi++++++++"+id)
      
       User.findOne({_id:id},function(err,data){
         if(err){
