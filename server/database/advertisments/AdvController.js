@@ -49,7 +49,6 @@ module.exports = {
         if (err) {
           throw err
         }
-        // console.log(data)
         res.json(data)
        })
   },
@@ -72,10 +71,8 @@ module.exports = {
   /// reject///
     Reject:function(req,res){
       console.log(req.body.id)
-       // res.json("Reject")
        Adv.findOne({_id:req.body.id},function(err,ok){
         if(err){throw err}else{
-         // console.log(ok.ad_uid)
           var i=ok.ad_uid;
           var desc=ok.ad_desc;
           UserC.SendemailR(i,desc);
@@ -111,8 +108,6 @@ module.exports = {
       })
           }
       })
-      // res.json("approve")
-      
 
     },
     getAdv:function (req,res) {
