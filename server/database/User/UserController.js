@@ -2,6 +2,7 @@ var utils=require('../../config/utils.js');
 var jwt = require('jwt-simple');
 var User = require('./UserModel.js');
 var nodemailer = require('nodemailer');
+
 module.exports = {
   signin: function (req, res) {
     var username = req.body.username;
@@ -142,7 +143,6 @@ transporter.sendMail(mailOptions, function(error, info){
   console.log('Message sent: ' + info.response);
       };
       });
-          /////////////////
         }
       })
   },
@@ -172,14 +172,13 @@ text:"Hello :"+" "+username+" your ad "+" "+desc+" "+"was Approved!!"
 //html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
   };
 
-transporter.sendMail(mailOptions, function(error, info){
-  if(error){
-  console.log(error);
-  }else{
-  console.log('Message sent: ' + info.response);
-      };
-      });
-          /////////////////
+  transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);
+        };
+  });
         }
       })
   }
