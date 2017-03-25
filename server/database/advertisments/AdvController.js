@@ -93,7 +93,6 @@ module.exports = {
 
     },
 
-  ///////
   ///approve//
   Approve:function(req,res){
       console.log(req.body.id)
@@ -117,19 +116,15 @@ module.exports = {
 
     },
     getAdv:function (req,res) {
- Adv.find({_id:req.params.advId},function (err,data){
-   if (!data.length || data === undefined ) {
-     res.json('no data for this adv ')
+       Adv.find({_id:req.params.advId},function (err,data){
+         if (!data.length || data === undefined ) {
+           res.json('no data for this adv ')
 
-   }else{
-     console.log('Wow , advertisment information retrived ')
-     res.json (data)
-   }
- })  
-}
-    
-
-  
-
+         }else{
+           console.log('Wow , advertisment information retrived ')
+           res.json (data)
+         }
+       })  
+      }
  
 };
