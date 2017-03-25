@@ -116,7 +116,6 @@ module.exports = {
            res.json('no data for this adv ')
 
          }else{
-           console.log('Wow , advertisment information retrived ')
            res.json (data)
          }
        })  
