@@ -2,6 +2,7 @@ var utils=require('../../config/utils.js');
 var jwt = require('jwt-simple');
 var User = require('./UserModel.js');
 var nodemailer = require('nodemailer');
+
 module.exports = {
   signin: function (req, res) {
     var username = req.body.username;
@@ -77,13 +78,13 @@ module.exports = {
    
   },
   getUser :function (req,res) {
-    console.log(req.params)
+    //console.log(req.params)
     var userId = JSON.parse(req.params._id);
      User.findOne({_id:userId},function(err,data){
       if (err) {
         throw err
       }
-      console.log(data)
+      //console.log(data)
       res.json(data)
      })
   },
@@ -108,7 +109,7 @@ module.exports = {
 
   //// handle email///
   SendemailR:function(id,desc){
-     console.log("hi++++++++"+id)
+     // console.log("hi++++++++"+id)
      
       User.findOne({_id:id},function(err,data){
         if(err){
@@ -142,7 +143,6 @@ transporter.sendMail(mailOptions, function(error, info){
   console.log('Message sent: ' + info.response);
       };
       });
-          /////////////////
         }
       })
   },
@@ -172,14 +172,13 @@ text:"Hello :"+" "+username+" your ad "+" "+desc+" "+"was Approved!!"
 //html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
   };
 
-transporter.sendMail(mailOptions, function(error, info){
-  if(error){
-  console.log(error);
-  }else{
-  console.log('Message sent: ' + info.response);
-      };
-      });
-          /////////////////
+  transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);
+        };
+  });
         }
       })
   }

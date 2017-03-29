@@ -49,7 +49,6 @@ module.exports = {
         if (err) {
           throw err
         }
-        // console.log(data)
         res.json(data)
        })
   },
@@ -72,10 +71,8 @@ module.exports = {
   /// reject///
     Reject:function(req,res){
       console.log(req.body.id)
-       // res.json("Reject")
        Adv.findOne({_id:req.body.id},function(err,ok){
         if(err){throw err}else{
-         // console.log(ok.ad_uid)
           var i=ok.ad_uid;
           var desc=ok.ad_desc;
           UserC.SendemailR(i,desc);
@@ -93,7 +90,6 @@ module.exports = {
 
     },
 
-  ///////
   ///approve//
   Approve:function(req,res){
       console.log(req.body.id)
@@ -112,24 +108,17 @@ module.exports = {
       })
           }
       })
-      // res.json("approve")
-      
 
     },
     getAdv:function (req,res) {
- Adv.find({_id:req.params.advId},function (err,data){
-   if (!data.length || data === undefined ) {
-     res.json('no data for this adv ')
+       Adv.find({_id:req.params.advId},function (err,data){
+         if (!data.length || data === undefined ) {
+           res.json('no data for this adv ')
 
-   }else{
-     console.log('Wow , advertisment information retrived ')
-     res.json (data)
-   }
- })  
-}
-    
-
-  
-
+         }else{
+           res.json (data)
+         }
+       })  
+      }
  
 };
